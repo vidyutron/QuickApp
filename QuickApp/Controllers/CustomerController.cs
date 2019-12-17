@@ -17,15 +17,17 @@ using QuickApp.Helpers;
 namespace QuickApp.Controllers
 {
     [Route("api/[controller]")]
-    public class CustomerController : Controller
+    public class CustomerController : ControllerBase
     {
-        private IUnitOfWork _unitOfWork;
-        readonly ILogger _logger;
-        readonly IEmailSender _emailSender;
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger _logger;
+        private readonly IEmailSender _emailSender;
 
 
-        public CustomerController(IUnitOfWork unitOfWork, ILogger<CustomerController> logger, IEmailSender emailSender)
+        public CustomerController(IMapper mapper, IUnitOfWork unitOfWork, ILogger<CustomerController> logger, IEmailSender emailSender)
         {
+            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _logger = logger;
             _emailSender = emailSender;
@@ -38,7 +40,7 @@ namespace QuickApp.Controllers
         public IActionResult Get()
         {
             var allCustomers = _unitOfWork.Customers.GetAllCustomersData();
-            return Ok(Mapper.Map<IEnumerable<CustomerViewModel>>(allCustomers));
+            return Ok(_mapper.Map<IEnumerable<CustomerViewModel>>(allCustomers));
         }
 
 

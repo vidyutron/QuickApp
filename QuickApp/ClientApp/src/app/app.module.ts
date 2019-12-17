@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { ToastaModule } from 'ngx-toasta';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -27,7 +28,7 @@ import { ConfigurationService } from './services/configuration.service';
 import { AlertService } from './services/alert.service';
 import { ThemeManager } from './services/theme-manager';
 import { LocalStoreManager } from './services/local-store-manager.service';
-import { EndpointFactory } from './services/endpoint-factory.service';
+import { OidcHelperService } from './services/oidc-helper.service';
 import { NotificationService } from './services/notification.service';
 import { NotificationEndpoint } from './services/notification-endpoint.service';
 import { AccountService } from './services/account.service';
@@ -64,69 +65,68 @@ import { RolesManagementComponent } from './components/controls/roles-management
 import { RoleEditorComponent } from './components/controls/role-editor.component';
 
 
-
-
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useClass: TranslateLanguageLoader
-      }
-    }),
-    NgxDatatableModule,
-    ToastaModule.forRoot(),
-    TooltipModule.forRoot(),
-    PopoverModule.forRoot(),
-    BsDropdownModule.forRoot(),
-    CarouselModule.forRoot(),
-    ModalModule.forRoot(),
-    ChartsModule
-  ],
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    CustomersComponent,
-    ProductsComponent,
-    OrdersComponent,
-    SettingsComponent,
-    UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
-    RolesManagementComponent, RoleEditorComponent,
-    AboutComponent,
-    NotFoundComponent,
-    NotificationsViewerComponent,
-    SearchBoxComponent,
-    StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,
-    EqualValidator,
-    LastElementDirective,
-    AutofocusDirective,
-    BootstrapTabDirective,
-    BootstrapToggleDirective,
-    BootstrapSelectDirective,
-    BootstrapDatepickerDirective,
-    GroupByPipe
-  ],
-  providers: [
-    { provide: ErrorHandler, useClass: AppErrorHandler },
-    AlertService,
-    ThemeManager,
-    ConfigurationService,
-    AppTitleService,
-    AppTranslationService,
-    NotificationService,
-    NotificationEndpoint,
-    AccountService,
-    AccountEndpoint,
-    LocalStoreManager,
-    EndpointFactory
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        AppRoutingModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useClass: TranslateLanguageLoader
+            }
+        }),
+        NgxDatatableModule,
+        OAuthModule.forRoot(),
+        ToastaModule.forRoot(),
+        TooltipModule.forRoot(),
+        PopoverModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        CarouselModule.forRoot(),
+        ModalModule.forRoot(),
+        ChartsModule
+    ],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        HomeComponent,
+        CustomersComponent,
+        ProductsComponent,
+        OrdersComponent,
+        SettingsComponent,
+        UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
+        RolesManagementComponent, RoleEditorComponent,
+        AboutComponent,
+        NotFoundComponent,
+        NotificationsViewerComponent,
+        SearchBoxComponent,
+        StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,
+        EqualValidator,
+        LastElementDirective,
+        AutofocusDirective,
+        BootstrapTabDirective,
+        BootstrapToggleDirective,
+        BootstrapSelectDirective,
+        BootstrapDatepickerDirective,
+        GroupByPipe
+    ],
+    providers: [
+        { provide: ErrorHandler, useClass: AppErrorHandler },
+        AlertService,
+        ThemeManager,
+        ConfigurationService,
+        AppTitleService,
+        AppTranslationService,
+        NotificationService,
+        NotificationEndpoint,
+        AccountService,
+        AccountEndpoint,
+        LocalStoreManager,
+        OidcHelperService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -4,7 +4,6 @@
 // =============================
 
 using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuickApp.Migrations
@@ -17,12 +16,12 @@ namespace QuickApp.Migrations
                 name: "AppCustomers",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: true),
                     PhoneNumber = table.Column<string>(unicode: false, maxLength: 30, nullable: true),
@@ -41,12 +40,12 @@ namespace QuickApp.Migrations
                 name: "AppProductCategories",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(maxLength: 500, nullable: true),
                     Icon = table.Column<string>(nullable: true),
@@ -114,12 +113,12 @@ namespace QuickApp.Migrations
                 name: "AppProducts",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
                     Description = table.Column<string>(maxLength: 500, nullable: true),
                     Icon = table.Column<string>(unicode: false, maxLength: 256, nullable: true),
@@ -155,7 +154,7 @@ namespace QuickApp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -175,12 +174,12 @@ namespace QuickApp.Migrations
                 name: "AppOrders",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Comments = table.Column<string>(maxLength: 500, nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
@@ -210,7 +209,7 @@ namespace QuickApp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -294,12 +293,12 @@ namespace QuickApp.Migrations
                 name: "AppOrderDetails",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedBy = table.Column<string>(maxLength: 256, nullable: true),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
